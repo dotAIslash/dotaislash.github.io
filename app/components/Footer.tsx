@@ -63,7 +63,7 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-4">Resources</h4>
             <ul className="space-y-3">
               <li>
-                <a href="https://github.com/dotAIslash/dotaislash-spec" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors">
+                <a href="https://github.com/dotAIslash/dotaislash-spec/blob/main/SPEC.md" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors">
                   Specification
                 </a>
               </li>

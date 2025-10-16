@@ -68,7 +68,7 @@ export default function Navbar() {
           {/* CTA Buttons */}
           <div className="flex items-center gap-4">
             <Link
-              href="https://github.com/dotAIslash/dotaislash-spec"
+              href="https://github.com/dotAIslash"
               target="_blank"
               rel="noreferrer"
               className="hidden sm:flex items-center gap-2 px-6 py-2.5 rounded-full border border-cyan-500/40 text-cyan-300 text-sm font-semibold hover:bg-cyan-500/10 hover:border-cyan-400/60 transition-all"
@@ -79,7 +79,7 @@ export default function Navbar() {
               GitHub
             </Link>
             <Link
-              href="https://github.com/dotAIslash/dotaislash-spec"
+              href="https://github.com/dotAIslash/dotaislash-spec/blob/main/SPEC.md"
               target="_blank"
               rel="noreferrer"
               className="px-6 py-2.5 rounded-full bg-gradient-to-r from-violet-600 to-cyan-600 text-white text-sm font-semibold shadow-lg shadow-violet-500/30 hover:shadow-xl hover:shadow-cyan-500/40 hover:scale-105 transition-all"

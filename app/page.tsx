@@ -250,7 +250,7 @@ export default function Home() {
 
               <div className="flex flex-wrap gap-6 justify-center lg:justify-start">
                 <Link
-                  href="https://github.com/dotAIslash/dotaislash-spec"
+                  href="https://github.com/dotAIslash/dotaislash-spec/blob/main/SPEC.md"
                   className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-violet-600 to-cyan-600 px-10 py-5 text-lg font-bold text-white shadow-2xl shadow-violet-500/50 hover:shadow-cyan-500/60 hover:scale-105 transition-all duration-300"
                   target="_blank"
                   rel="noreferrer"
