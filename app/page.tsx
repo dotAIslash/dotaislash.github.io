@@ -32,9 +32,9 @@ const repoLinks = [
     color: "border-orange-500/30 text-orange-200",
   },
   {
-    name: "dotaislash-website",
-    description: "Documentation hub, migration guides, and adapter registry.",
-    href: "https://github.com/dotAIslash/dotaislash-website",
+    name: "Spec issues",
+    description: "Follow proposals and RFCs via GitHub issues in the spec repo.",
+    href: "https://github.com/dotAIslash/dotaislash-spec/issues",
     color: "border-cyan-500/30 text-cyan-200",
   },
 ];
@@ -269,12 +269,12 @@ export default function Home() {
               Org discussions
             </a>
             <a
-              href="https://github.com/dotAIslash/dotaislash-rfcs"
+              href="https://github.com/dotAIslash/dotaislash-spec/issues"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-cyan-400/60 px-6 py-3 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-400/10"
             >
-              Submit an RFC
+              Spec issues
             </a>
             <a
               href="https://github.com/alpha912"
@@ -302,8 +302,8 @@ export default function Home() {
             <a className="hover:text-cyan-200" href="https://github.com/dotAIslash/dotaislash-spec" target="_blank" rel="noreferrer">
               Spec repo
             </a>
-            <a className="hover:text-cyan-200" href="https://github.com/dotAIslash/dotaislash-website" target="_blank" rel="noreferrer">
-              Docs site
+            <a className="hover:text-cyan-200" href="https://github.com/dotAIslash/dotaislash-spec/issues" target="_blank" rel="noreferrer">
+              Spec issues
             </a>
           </div>
         </div>
