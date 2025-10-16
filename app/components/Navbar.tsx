@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export default function Navbar() {
@@ -28,8 +29,15 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-violet-600 to-cyan-600 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
-              <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-violet-600 to-cyan-600 flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-xl">.ai/</span>
+              <div className="relative w-12 h-12 rounded-2xl overflow-hidden shadow-lg">
+                <Image
+                  src="/logo.png"
+                  alt="dotAIslash logo"
+                  width={48}
+                  height={48}
+                  className="object-cover"
+                  priority
+                />
               </div>
             </div>
             <div className="flex flex-col">

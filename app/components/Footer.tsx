@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Footer() {
   return (
     <footer className="relative bg-gray-950 text-gray-200 mt-24">
@@ -19,8 +21,14 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-6">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-violet-500 to-cyan-500 rounded-2xl blur-lg opacity-50" />
-                <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-cyan-500 flex items-center justify-center shadow-glow-violet">
-                  <span className="text-white font-bold text-2xl">.ai/</span>
+                <div className="relative w-14 h-14 rounded-2xl overflow-hidden shadow-glow-violet">
+                  <Image
+                    src="/logo.png"
+                    alt="dotAIslash logo"
+                    width={56}
+                    height={56}
+                    className="object-cover"
+                  />
                 </div>
               </div>
               <div className="flex flex-col">
