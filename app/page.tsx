@@ -1,89 +1,118 @@
 import Link from "next/link";
+import Navbar from "./components/Navbar";
+import CodeTerminal from "./components/CodeTerminal";
+import Footer from "./components/Footer";
 
 const stats = [
   {
     label: "Canonical primitives",
     value: "8",
     description: "Rules, prompts, agents, memory, knowledge, tools, settings, permissions",
+    gradient: "from-violet-400 to-cyan-400",
   },
   {
     label: "File formats",
     value: "2",
     description: "Plain JSON for structure, Markdown for human-readable context",
+    gradient: "from-cyan-400 to-lime-400",
   },
   {
-    label: "Interop targets",
-    value: "Claude · Cursor · Gemini · Codex",
-    description: "Designed to map onto today’s IDE + CLI copilots",
+    label: "Target runtimes",
+    value: "5+",
+    description: "Cursor, Windsurf, Claude, Codex, Aider, and more",
+    gradient: "from-lime-400 to-pink-400",
   },
 ];
 
 const pillars = [
   {
+    icon: "🔄",
     title: "Portable by design",
-    body: "One `.ai/` folder that every agent runtime can parse. Structured merge rules keep overrides predictable.",
+    body: "One `.ai/` folder that every agent runtime can parse. Structured merge rules keep overrides predictable across tools.",
   },
   {
+    icon: "🔒",
     title: "Security-first",
-    body: "Explicit deny → ask → allow permissions, secret bindings, and knowledge redaction baked in.",
+    body: "Explicit deny → ask → allow permissions, secret bindings, and knowledge redaction baked into the spec from day one.",
   },
   {
-    title: "Accessible visuals",
-    body: "The CodeVibe system pushes AAA contrast, gradient energy, and curvy geometry across docs and dashboards.",
+    icon: "⚡",
+    title: "Developer experience",
+    body: "Lintable, diffable, testable. Designed for CI/CD pipelines while staying approachable for humans to author.",
   },
 ];
 
 const categories = [
   {
     name: "Rules",
+    icon: "📜",
     summary: "Persistent project context delivered to every agent call.",
+    color: "from-violet-500 to-violet-600",
   },
   {
     name: "Prompts",
+    icon: "💬",
     summary: "Reusable templates with typed variables and inline tests.",
+    color: "from-cyan-500 to-cyan-600",
   },
   {
     name: "Agents",
-    summary: "Declarative presets describing goals, tools, context attachments, and memory scope.",
+    icon: "🤖",
+    summary: "Declarative presets describing goals, tools, context attachments.",
+    color: "from-lime-500 to-lime-600",
   },
   {
     name: "Memory",
+    icon: "🧠",
     summary: "Retention policies and durable notes – session, project, or none.",
+    color: "from-pink-500 to-pink-600",
   },
   {
     name: "Knowledge",
-    summary: "Ingestion config for docs, repos, and URLs with redaction directives.",
+    icon: "📚",
+    summary: "Ingestion config for docs, repos, URLs with redaction directives.",
+    color: "from-orange-500 to-orange-600",
   },
   {
     name: "Tools",
-    summary: "MCP servers and HTTP descriptors so capabilities are reproducible anywhere.",
+    icon: "🛠️",
+    summary: "MCP servers and HTTP descriptors for reproducible capabilities.",
+    color: "from-violet-500 to-cyan-500",
   },
   {
     name: "Settings",
+    icon: "⚙️",
     summary: "Model routing, budgets, UI preferences, and profile overlays.",
+    color: "from-cyan-500 to-lime-500",
   },
   {
     name: "Permissions",
-    summary: "Deny / ask / allow policy with secret bindings and enforcement hints.",
+    icon: "🛡️",
+    summary: "Policy enforcement with secret bindings and ask-before-run prompts.",
+    color: "from-pink-500 to-orange-500",
   },
 ];
 
 const workflow = [
   {
     step: "Author",
+    icon: "✍️",
     detail: "Capture durable guidance in Markdown with `ai:meta` preambles for scope, priority, and attach mode.",
   },
   {
     step: "Validate",
+    icon: "✅",
     detail: "Run `versa lint` to check JSON Schemas and Markdown metadata across environments.",
   },
   {
     step: "Launch",
-    detail: "Start MCP servers, merge profile overlays, and hand the same `.ai/` context to IDEs, CLIs, and hosted agents.",
+    icon: "🚀",
+    detail: "Start MCP servers, merge profile overlays, hand the same `.ai/` context to all tools.",
   },
   {
     step: "Evolve",
-    detail: "Ship conformance scenarios, design updates, and spec proposals via issues and discussions.",
+    icon: "🔄",
+    detail: "Ship conformance scenarios, design updates, and spec proposals via issues.",
   },
 ];
 
@@ -92,304 +121,406 @@ const repos = [
     name: "dotaislash-spec",
     description: "Authoritative SPEC.md for VERSA 1.0 and future revisions.",
     href: "https://github.com/dotAIslash/dotaislash-spec",
+    gradient: "from-violet-500 to-violet-600",
   },
   {
     name: "dotaislash-schemas",
     description: "JSON Schema definitions for every `.ai/` artifact.",
     href: "https://github.com/dotAIslash/dotaislash-schemas",
+    gradient: "from-cyan-500 to-cyan-600",
   },
   {
     name: "dotaislash-cli",
-    description: "Reference CLI to init, lint, print merged context, and preview agent packets.",
+    description: "Reference CLI to init, lint, print merged context, preview packets.",
     href: "https://github.com/dotAIslash/dotaislash-cli",
+    gradient: "from-lime-500 to-lime-600",
   },
   {
     name: "dotaislash-examples",
     description: "Minimal and full project templates you can clone today.",
     href: "https://github.com/dotAIslash/dotaislash-examples",
+    gradient: "from-pink-500 to-pink-600",
   },
   {
     name: "dotaislash-conformance",
-    description: "Black-box scenarios used to certify VERSA-compatible runtimes.",
+    description: "Black-box scenarios to certify VERSA-compatible runtimes.",
     href: "https://github.com/dotAIslash/dotaislash-conformance",
+    gradient: "from-orange-500 to-orange-600",
+  },
+  {
+    name: "dotaislash-adapters",
+    description: "Tool-specific adapters transforming VERSA to native configs.",
+    href: "https://github.com/dotAIslash/dotaislash-adapters",
+    gradient: "from-violet-500 to-cyan-500",
   },
 ];
 
-function GlowCard({
+function EnhancedCard({
   children,
   className = "",
+  hoverEffect = true,
 }: {
   children: React.ReactNode;
   className?: string;
+  hoverEffect?: boolean;
 }) {
   return (
-    <div className={`relative overflow-hidden rounded-3xl border border-white/10 bg-gray-900/70 p-6 shadow-[0_30px_80px_rgba(12,14,26,0.45)] transition hover:border-cyan-400/40 ${className}`}>
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-0 transition-all duration-500 hover:opacity-100" style={{ background: "radial-gradient(circle at top, rgba(217,51,255,0.35), transparent 60%), radial-gradient(circle at bottom, rgba(13,217,255,0.25), transparent 65%)" }} />
-      {children}
+    <div
+      className={`group relative overflow-hidden rounded-3xl border-2 border-gray-800/50 bg-gray-900/70 backdrop-blur-sm p-8 shadow-2xl transition-all duration-500 ${
+        hoverEffect ? "hover:border-violet-500/50 hover:scale-[1.02] hover:shadow-violet-500/20" : ""
+      } ${className}`}
+    >
+      {/* Gradient Glow Effect on Hover */}
+      {hoverEffect && (
+        <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-cyan-500/10" />
+        </div>
+      )}
+      
+      {/* Animated Border Gradient */}
+      {hoverEffect && (
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="absolute -inset-[2px] bg-gradient-to-r from-violet-500 via-cyan-500 to-pink-500 rounded-3xl opacity-20 blur-xl animate-gradient-x" style={{ backgroundSize: "200% 100%" }} />
+        </div>
+      )}
+      
+      <div className="relative z-10">{children}</div>
     </div>
   );
 }
 
 export default function Home() {
   return (
-    <div className="text-foreground">
-      <section className="relative mx-auto flex max-w-6xl flex-col gap-16 px-6 pb-24 pt-28 lg:flex-row lg:items-center lg:gap-20">
-        <div className="absolute inset-x-0 -top-32 h-96 bg-gradient-hero opacity-30 blur-3xl" aria-hidden />
-        <div className="absolute -left-20 top-0 h-72 w-72 animate-blob rounded-full bg-gradient-to-br from-violet-500/40 to-cyan-400/40 blur-3xl" aria-hidden />
-        <div className="absolute right-0 bottom-0 h-64 w-64 animate-blob rounded-full bg-gradient-to-tr from-pink-500/40 to-orange-400/40 blur-3xl animation-delay-2000" aria-hidden />
+    <div className="text-foreground overflow-hidden">
+      <Navbar />
 
-        <div className="relative z-10 flex-1 space-y-8 text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-gray-900/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-cyan-200">
-            Vendor neutral
-          </div>
-          <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-            <span className="bg-gradient-to-r from-violet-400 via-cyan-300 to-lime-400 bg-clip-text text-transparent">
-              VERSA 1.0
-            </span>{" "}
-            is the portable `.ai/` repo spec for agentic coding
-          </h1>
-          <p className="text-lg text-gray-300 sm:text-xl">
-            Capture rules, prompts, agents, memory, and more in one folder. Ship it to any IDE, CLI, or hosted copilot and get identical context every time.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 lg:justify-start">
-            <Link
-              href="https://github.com/dotAIslash/dotaislash-spec"
-              className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-violet-600 to-cyan-500 px-8 py-4 text-base font-semibold text-white shadow-glow-violet transition hover:shadow-glow-cyan"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span>Read the spec</span>
-              <svg
-                className="h-5 w-5 transition group-hover:translate-x-1"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </Link>
-            <Link
-              href="https://github.com/orgs/dotAIslash/discussions"
-              className="inline-flex items-center gap-2 rounded-full border border-cyan-400/60 px-8 py-4 text-base font-semibold text-cyan-200 transition hover:bg-cyan-400/10"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Join discussions
-            </Link>
-          </div>
+      {/* HERO SECTION */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        {/* Animated Mesh Background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950" />
+          <div
+            className="absolute inset-0 opacity-30 animate-gradient-xy"
+            style={{
+              background: `
+                radial-gradient(at 0% 0%, rgba(108, 19, 127, 0.4) 0%, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(13, 217, 255, 0.4) 0%, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(217, 255, 51, 0.3) 0%, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(255, 26, 175, 0.4) 0%, transparent 50%)
+              `,
+              backgroundSize: "400% 400%",
+            }}
+          />
         </div>
 
-        <GlowCard className="flex-1">
-          <div className="space-y-6">
-            <div className="text-sm uppercase tracking-[0.3em] text-gray-500">Spec snapshot</div>
-            <ul className="space-y-5">
-              {stats.map((item) => (
-                <li key={item.label} className="flex flex-col gap-1">
-                  <div className="text-3xl font-semibold text-cyan-200">{item.value}</div>
-                  <div className="text-sm font-medium text-gray-200">{item.label}</div>
-                  <p className="text-sm text-gray-400">{item.description}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </GlowCard>
-      </section>
+        {/* Floating Blobs */}
+        <div className="absolute top-20 left-10 w-96 h-96 bg-violet-500/30 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-float" />
+        <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-cyan-500/30 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-float-slow" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-morph" />
 
-      <section className="mx-auto max-w-6xl px-6 pb-24">
-        <SectionHeading
-          eyebrow="Why VERSA"
-          title="Interoperable from day one"
-          description="Everything you need to hand consistent project context to modern agents ranked by AAA accessibility and security best practices."
-        />
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {pillars.map((pillar) => (
-            <GlowCard key={pillar.title}>
-              <h3 className="text-xl font-semibold text-cyan-200">{pillar.title}</h3>
-              <p className="mt-3 text-sm text-gray-300">{pillar.body}</p>
-            </GlowCard>
-          ))}
-        </div>
-      </section>
-
-      <section id="versa" className="relative mx-auto max-w-6xl px-6 pb-24">
-        <SectionHeading
-          eyebrow="Eight canonical categories"
-          title="Everything an agent needs to understand your repo"
-          description="VERSA balances machine readability with human-friendly authoring. Markdown gets JSON front matter (`ai:meta`), JSON gets deeply merged.">
-        </SectionHeading>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {categories.map((category) => (
-            <GlowCard key={category.name} className="h-full">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-cyan-200">{category.name}</h3>
-                <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-violet-500/50 to-cyan-500/50" />
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Column */}
+            <div className="space-y-8 text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 rounded-full border-2 border-cyan-400/40 bg-gray-900/80 backdrop-blur-sm px-5 py-2.5 text-xs font-bold uppercase tracking-[0.35em] text-cyan-300 shadow-lg shadow-cyan-500/20">
+                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                Vendor Neutral
               </div>
-              <p className="mt-3 text-sm text-gray-300">{category.summary}</p>
-            </GlowCard>
-          ))}
-        </div>
-      </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-24">
-        <SectionHeading
-          eyebrow="Workflow"
-          title="From authoring to runtime in four deliberate steps"
-          description="Designed for DX: lintable, diffable, and easy to automate in CI while staying approachable for humans."
-        />
-        <div className="relative mt-12 grid gap-8 lg:grid-cols-4">
-          {workflow.map((item, index) => (
-            <GlowCard key={item.step} className="h-full">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-cyan-500 text-lg font-bold text-white">
-                {index + 1}
-              </div>
-              <h3 className="mt-4 text-xl font-semibold text-cyan-200">{item.step}</h3>
-              <p className="mt-3 text-sm text-gray-300">{item.detail}</p>
-            </GlowCard>
-          ))}
-        </div>
-      </section>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                <span className="bg-gradient-to-r from-violet-400 via-cyan-300 to-lime-400 bg-clip-text text-transparent animate-gradient-x inline-block" style={{ backgroundSize: "200% auto" }}>
+                  VERSA 1.0
+                </span>
+                <br />
+                <span className="text-gray-100">
+                  One <span className="text-cyan-400 font-mono">.ai/</span> folder,
+                  <br />
+                  every runtime
+                </span>
+              </h1>
 
-      <section className="mx-auto max-w-6xl px-6 pb-24">
-        <SectionHeading
-          eyebrow="Ecosystem"
-          title="The DotAISlash toolkit"
-          description="Specs, schemas, CLI tooling, examples, and conformance suites keep VERSA grounded in real projects."
-        />
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {repos.map((repo) => (
-            <GlowCard key={repo.name}>
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-cyan-200">{repo.name}</h3>
-                <span className="text-sm text-gray-500">GitHub</span>
-              </div>
-              <p className="mt-3 text-sm text-gray-300">{repo.description}</p>
-              <Link
-                href={repo.href}
-                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-200 hover:text-cyan-100"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Open repository
-                <svg
-                  className="h-4 w-4"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M5 12h14" />
-                  <path d="m12 5 7 7-7 7" />
-                </svg>
-              </Link>
-            </GlowCard>
-          ))}
-        </div>
-      </section>
-
-      <section id="design" className="mx-auto max-w-6xl px-6 pb-24">
-        <SectionHeading
-          eyebrow="Design system"
-          title="CodeVibe powers our documentation and dashboards"
-          description="Gradients, AAA contrast, and organic geometry keep VERSA materials fresh without sacrificing legibility."
-        />
-        <GlowCard className="mt-12">
-          <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-cyan-200">Design resources</h3>
-              <p className="text-sm text-gray-300">
-                CodeVibe blends Cyber Violet, Electric Cyan, Neon Lime, Plasma Pink, and Sunset Orange. Animations like gradient shimmers and morphing blobs add motion while staying performant.
+              <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-2xl">
+                The portable repo spec for agentic coding. Capture{" "}
+                <span className="text-violet-400 font-semibold">rules</span>,{" "}
+                <span className="text-cyan-400 font-semibold">prompts</span>,{" "}
+                <span className="text-lime-400 font-semibold">agents</span>, and more—ship
+                to any IDE, CLI, or hosted copilot.
               </p>
-              <div className="flex flex-wrap gap-4">
+
+              <div className="flex flex-wrap gap-6 justify-center lg:justify-start">
                 <Link
-                  href="/design/codevibe"
-                  className="inline-flex items-center gap-2 rounded-full border border-cyan-400/60 px-6 py-3 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-400/10"
+                  href="https://github.com/dotAIslash/dotaislash-spec"
+                  className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-violet-600 to-cyan-600 px-10 py-5 text-lg font-bold text-white shadow-2xl shadow-violet-500/50 hover:shadow-cyan-500/60 hover:scale-105 transition-all duration-300"
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  Read the system notes
+                  <span>Read the Spec</span>
+                  <svg
+                    className="h-6 w-6 transition-transform group-hover:translate-x-1"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
                 </Link>
+
                 <Link
-                  href="/design/assets"
-                  className="inline-flex items-center gap-2 rounded-full border border-cyan-400/60 px-6 py-3 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-400/10"
+                  href="https://github.com/orgs/dotAIslash/discussions"
+                  className="inline-flex items-center gap-3 rounded-full border-2 border-cyan-400/60 bg-gray-900/50 backdrop-blur-sm px-10 py-5 text-lg font-bold text-cyan-300 hover:bg-cyan-500/10 hover:border-cyan-400 transition-all duration-300"
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  Visual assets
+                  Join Discussions
                 </Link>
               </div>
+
+              {/* Quick Stats */}
+              <div className="flex flex-wrap gap-8 pt-8 justify-center lg:justify-start">
+                {stats.map((stat) => (
+                  <div key={stat.label} className="text-center lg:text-left">
+                    <div className={`text-4xl md:text-5xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-2`}>
+                      {stat.value}
+                    </div>
+                    <div className="text-sm text-gray-400 font-medium uppercase tracking-wider">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="grid gap-3 sm:grid-cols-3">
-              {[
-                "linear-gradient(135deg, #6C137F 0%, #0DD9FF 100%)",
-                "linear-gradient(90deg, #FF1AAF 0%, #D9FF33 50%, #0DD9FF 100%)",
-                "linear-gradient(45deg, #FF8833 0%, #FF4DCC 100%)",
-              ].map((gradient, idx) => (
-                <div
-                  key={idx}
-                  className="h-28 rounded-3xl border border-white/10 shadow-lg"
-                  style={{ background: gradient }}
-                />
-              ))}
+
+            {/* Right Column - Code Terminal */}
+            <div className="animate-float">
+              <CodeTerminal />
             </div>
           </div>
-        </GlowCard>
+        </div>
+
+        {/* Wave Divider */}
+        <div className="absolute bottom-0 left-0 w-full">
+          <svg
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+            className="w-full h-20 md:h-32 fill-gray-900"
+          >
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" />
+          </svg>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-32">
-        <div className="overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-violet-600/80 to-cyan-500/80 p-[1px] shadow-[0_40px_120px_rgba(12,14,26,0.6)]">
-          <div className="rounded-3xl bg-gray-950/90 px-10 py-12 text-center lg:px-16">
-            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
-              Ready to wire your repo for every agent?
+      {/* WHY VERSA SECTION */}
+      <section id="features" className="relative bg-gray-900 py-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <span className="text-xs font-bold uppercase tracking-[0.4em] text-cyan-400 mb-4 block">
+              Why VERSA
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Interoperable from <span className="bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">day one</span>
             </h2>
-            <p className="mt-4 text-lg text-gray-200">
-              Clone the examples, lint your `.ai/` folder, and open a spec issue if you need new capabilities. We’re building VERSA openly with the community.
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Everything you need to hand consistent project context to modern agents, built with AAA accessibility and security best practices.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Link
-                href="https://github.com/dotAIslash/dotaislash-examples"
-                className="inline-flex items-center gap-2 rounded-full bg-white/10 px-8 py-4 text-base font-semibold text-white transition hover:bg-white/20"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Clone examples
-              </Link>
-              <Link
-                href="https://github.com/dotAIslash/dotaislash-spec/issues/new"
-                className="inline-flex items-center gap-2 rounded-full bg-white text-base font-semibold text-gray-900 px-8 py-4 transition hover:bg-gray-100"
-                target="_blank"
-                rel="noreferrer"
-              >
-                File a proposal
-              </Link>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {pillars.map((pillar) => (
+              <EnhancedCard key={pillar.title}>
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-5xl">{pillar.icon}</span>
+                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-violet-500/30 to-cyan-500/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                <h3 className="text-2xl font-bold text-cyan-300 mb-4">{pillar.title}</h3>
+                <p className="text-gray-300 leading-relaxed">{pillar.body}</p>
+              </EnhancedCard>
+            ))}
+          </div>
+        </div>
+
+        {/* Wave Divider */}
+        <div className="absolute bottom-0 left-0 w-full transform translate-y-full">
+          <svg
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+            className="w-full h-20 md:h-32 fill-gray-900 rotate-180"
+          >
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" />
+          </svg>
+        </div>
+      </section>
+
+      {/* CATEGORIES SECTION */}
+      <section id="versa" className="relative bg-gray-950 py-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <span className="text-xs font-bold uppercase tracking-[0.4em] text-violet-400 mb-4 block">
+              Eight Canonical Categories
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Everything an agent needs to <span className="bg-gradient-to-r from-cyan-400 to-lime-400 bg-clip-text text-transparent">understand your repo</span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              VERSA balances machine readability with human-friendly authoring. Markdown gets JSON front matter, JSON gets deeply merged.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {categories.map((category) => (
+              <EnhancedCard key={category.name}>
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-xl font-bold text-white">{category.name}</h3>
+                  <div className={`h-12 w-12 rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                    {category.icon}
+                  </div>
+                </div>
+                <p className="text-sm text-gray-300 leading-relaxed">{category.summary}</p>
+              </EnhancedCard>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WORKFLOW SECTION */}
+      <section className="relative bg-gray-900 py-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <span className="text-xs font-bold uppercase tracking-[0.4em] text-pink-400 mb-4 block">
+              Workflow
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              From authoring to runtime in <span className="bg-gradient-to-r from-pink-400 to-orange-400 bg-clip-text text-transparent">four steps</span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Designed for DX: lintable, diffable, and easy to automate in CI while staying approachable for humans.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {workflow.map((item, index) => (
+              <EnhancedCard key={item.step}>
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-cyan-500 text-2xl font-bold text-white mb-6 shadow-lg shadow-violet-500/30 group-hover:scale-110 transition-transform duration-300">
+                  {index + 1}
+                </div>
+                <div className="text-4xl mb-4">{item.icon}</div>
+                <h3 className="text-2xl font-bold text-cyan-300 mb-4">{item.step}</h3>
+                <p className="text-sm text-gray-300 leading-relaxed">{item.detail}</p>
+              </EnhancedCard>
+            ))}
+          </div>
+        </div>
+
+        {/* Wave Divider */}
+        <div className="absolute bottom-0 left-0 w-full transform translate-y-full">
+          <svg
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+            className="w-full h-20 md:h-32 fill-gray-900 rotate-180"
+          >
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" />
+          </svg>
+        </div>
+      </section>
+
+      {/* ECOSYSTEM SECTION */}
+      <section id="ecosystem" className="relative bg-gray-950 py-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <span className="text-xs font-bold uppercase tracking-[0.4em] text-lime-400 mb-4 block">
+              Ecosystem
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              The <span className="bg-gradient-to-r from-lime-400 to-cyan-400 bg-clip-text text-transparent">dotAIslash</span> toolkit
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Specs, schemas, CLI tooling, examples, and conformance suites keep VERSA grounded in real projects.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {repos.map((repo) => (
+              <EnhancedCard key={repo.name}>
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-bold text-white font-mono">{repo.name}</h3>
+                  <span className="text-xs text-gray-500 uppercase tracking-wider">GitHub</span>
+                </div>
+                <p className="text-sm text-gray-300 leading-relaxed mb-6">{repo.description}</p>
+                
+                {/* Gradient Bar */}
+                <div className={`h-1 w-full rounded-full bg-gradient-to-r ${repo.gradient} mb-6 group-hover:h-1.5 transition-all duration-300`} />
+                
+                <Link
+                  href={repo.href}
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 hover:text-cyan-200 transition-colors group/link"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Open repository
+                  <svg
+                    className="h-4 w-4 group-hover/link:translate-x-1 transition-transform"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </EnhancedCard>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA SECTION */}
+      <section className="relative bg-gray-950 py-32">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="relative overflow-hidden rounded-[2.5rem] p-[2px]">
+            {/* Animated Border Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-r from-violet-500 via-cyan-500 to-pink-500 animate-gradient-x" style={{ backgroundSize: "200% 100%" }} />
+            
+            {/* Card Content */}
+            <div className="relative rounded-[2.4rem] bg-gray-900 px-12 py-16 text-center">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Ready to wire your repo for <span className="bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">every agent</span>?
+              </h2>
+              <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Clone the examples, lint your <code className="text-cyan-400 font-mono">.ai/</code> folder, and open a spec issue if you need new capabilities. We&apos;re building VERSA openly with the community.
+              </p>
+              
+              <div className="flex flex-wrap justify-center gap-6">
+                <Link
+                  href="https://github.com/dotAIslash/dotaislash-examples"
+                  className="inline-flex items-center gap-3 rounded-full bg-white text-gray-900 px-10 py-5 text-lg font-bold hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-2xl"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M9 17H7A5 5 0 0 1 7 7h2M15 7h2a5 5 0 1 1 0 10h-2M8 12h8" />
+                  </svg>
+                  Clone Examples
+                </Link>
+                
+                <Link
+                  href="https://github.com/dotAIslash/dotaislash-spec/issues/new"
+                  className="inline-flex items-center gap-3 rounded-full border-2 border-cyan-400/60 bg-cyan-500/10 text-cyan-300 px-10 py-5 text-lg font-bold hover:bg-cyan-500/20 hover:border-cyan-400 hover:scale-105 transition-all duration-300"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 4v16m8-8H4" />
+                  </svg>
+                  File a Proposal
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
-    </div>
-  );
-}
 
-function SectionHeading({
-  eyebrow,
-  title,
-  description,
-  children,
-}: {
-  eyebrow: string;
-  title: string;
-  description: string;
-  children?: React.ReactNode;
-}) {
-  return (
-    <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-      <span className="text-xs font-semibold uppercase tracking-[0.4em] text-cyan-200">
-        {eyebrow}
-      </span>
-      <h2 className="mt-4 text-3xl font-bold text-foreground sm:text-4xl">{title}</h2>
-      <p className="mt-4 max-w-3xl text-base text-gray-300">{description}</p>
-      {children}
+      <Footer />
     </div>
   );
 }

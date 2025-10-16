@@ -13,9 +13,40 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DotAISlash · VERSA 1.0",
+  title: "dotAIslash · VERSA 1.0 | One .ai/ folder, every runtime",
   description:
-    "DotAISlash maintains VERSA, the vendor-neutral extensible repo spec for agents, plus the CodeVibe design system.",
+    "The vendor-neutral extensible repo spec for agents. Capture rules, prompts, agents, and more in one portable .ai/ folder. Ship to any IDE, CLI, or hosted copilot.",
+  keywords: [
+    "VERSA",
+    "dotAIslash",
+    ".ai folder",
+    "AI agents",
+    "agent configuration",
+    "Cursor",
+    "Windsurf",
+    "Claude",
+    "developer tools",
+    "agentic coding",
+  ],
+  authors: [{ name: "dotAIslash Team" }],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://dotaislash.github.io",
+    siteName: "dotAIslash",
+    title: "VERSA 1.0 | Portable .ai/ folder spec for agents",
+    description:
+      "One .ai/ folder, every runtime. The vendor-neutral spec for agentic coding contexts.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "VERSA 1.0 | dotAIslash",
+    description: "One .ai/ folder, every runtime. Portable agent configuration spec.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -24,11 +55,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <div className="fixed inset-0 -z-50 bg-background" />
-        <div className="fixed inset-0 -z-40 opacity-40 [background-image:radial-gradient(ellipse_at_top,#6C137F33,transparent_55%),radial-gradient(ellipse_at_bottom,#0DD9FF22,transparent_60%)]" />
-        <div className="fixed inset-0 -z-30 opacity-40 [background:radial-gradient(circle_at_1px_1px,#1B1D22 1px,transparent 0)] [background-size:48px_48px]" />
+    <html lang="en" className="scroll-smooth">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <div className="fixed inset-0 -z-50 bg-gray-950" />
         <div className="relative min-h-screen">
           {children}
         </div>
