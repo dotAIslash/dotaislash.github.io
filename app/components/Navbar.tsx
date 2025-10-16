@@ -27,18 +27,16 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-violet-600 to-cyan-600 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
-              <div className="relative w-12 h-12 rounded-2xl overflow-hidden shadow-lg">
-                <Image
-                  src="/logo.png"
-                  alt="dotAIslash logo"
-                  width={48}
-                  height={48}
-                  className="object-cover"
-                  priority
-                />
-              </div>
+            <div className="relative w-12 h-12">
+              <div className="absolute inset-0 bg-gradient-to-br from-violet-600 to-cyan-600 blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
+              <Image
+                src="/logo.png"
+                alt="dotAIslash logo"
+                width={48}
+                height={48}
+                className="relative object-contain drop-shadow-2xl"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span className="text-xl font-bold bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">

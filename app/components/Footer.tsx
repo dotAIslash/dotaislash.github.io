@@ -19,17 +19,15 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-violet-500 to-cyan-500 rounded-2xl blur-lg opacity-50" />
-                <div className="relative w-14 h-14 rounded-2xl overflow-hidden shadow-glow-violet">
-                  <Image
-                    src="/logo.png"
-                    alt="dotAIslash logo"
-                    width={56}
-                    height={56}
-                    className="object-cover"
-                  />
-                </div>
+              <div className="relative w-14 h-14">
+                <div className="absolute inset-0 bg-gradient-to-br from-violet-500 to-cyan-500 blur-xl opacity-50" />
+                <Image
+                  src="/logo.png"
+                  alt="dotAIslash logo"
+                  width={56}
+                  height={56}
+                  className="relative object-contain drop-shadow-2xl"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="text-2xl font-bold bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">
