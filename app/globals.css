@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #111317;
+  color: #F2F4F8;
+  font-family: var(--font-geist-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  transition: color 0.2s ease;
+}
+
+::selection {
+  background: rgba(217, 51, 255, 0.35);
+  color: #ffffff;
+}
