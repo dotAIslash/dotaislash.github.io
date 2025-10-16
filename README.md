@@ -2,13 +2,13 @@
 
 # 🌐 dotAIslash Website
 
-### VERSA 1.0 Landing Site with CodeVibe Design System
+### VERSA 1.0 Landing Site - Universal Rules for AI Agents
 
 [![Website](https://img.shields.io/badge/Live-dotaislash.github.io-violet?style=for-the-badge&logo=vercel)](https://dotaislash.github.io)
 [![Next.js](https://img.shields.io/badge/Next.js-15.5-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
 [![Tailwind](https://img.shields.io/badge/Tailwind-4.0-cyan?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com)
 
-[**Visit Site**](https://dotaislash.github.io) · [**VERSA Spec**](https://github.com/dotAIslash/dotaislash-spec) · [**CodeVibe System**](https://dotaislash.github.io/design)
+[**Visit Site**](https://dotaislash.github.io) · [**VERSA Spec**](https://github.com/dotAIslash/dotaislash-spec) · [**Documentation**](https://dotaislash.github.io)
 
 </div>
 
@@ -16,12 +16,12 @@
 
 ## 🎨 What is this?
 
-The **official landing site** for VERSA (Vendor-neutral Extensible Repo Spec for Agents), showcasing the `.ai/` folder standard with a stunning, modern design.
+The **official landing site** for VERSA (Vendor-neutral Extensible Repo Spec for Agents) - inspired by **Uni**"**VERSA**"**l Rules for AI Agents**. Showcases the `.ai/` folder standard with a stunning, modern design.
 
 Built with:
 - ⚡ **Next.js 15.5** - React framework with App Router
 - 🎨 **Tailwind CSS 4.0** - Utility-first styling
-- 🎭 **CodeVibe Design System** - Vibrant, accessible design
+- 🎭 **Modern Design System** - Vibrant gradients, animations, AAA accessibility
 - 🚀 **GitHub Pages** - Static export deployment
 
 ---
@@ -105,7 +105,7 @@ dotaislash.github.io/
 
 ---
 
-## 🎨 CodeVibe Design System
+## 🎨 Design System
 
 ### Color Palette
 
@@ -382,15 +382,15 @@ MIT © [dotAIslash](https://github.com/dotAIslash)
 - 🌐 **Live Site:** [dotaislash.github.io](https://dotaislash.github.io)
 - 📖 **VERSA Spec:** [github.com/dotAIslash/dotaislash-spec](https://github.com/dotAIslash/dotaislash-spec)
 - 💬 **Discussions:** [github.com/orgs/dotAIslash/discussions](https://github.com/orgs/dotAIslash/discussions)
-- 🎨 **CodeVibe:** [dotaislash.github.io/design](https://dotaislash.github.io/design)
+- 📚 **Documentation:** [dotaislash.github.io](https://dotaislash.github.io)
 
 ---
 
 <div align="center">
 
-**Built with 🔥 using Next.js 15 + Tailwind CSS 4 + CodeVibe**
+**Built with 🔥 using Next.js 15 + Tailwind CSS 4**
 
-Showcasing VERSA in style
+Showcasing VERSA - Universal Rules for AI Agents
 
 [⭐ Star us on GitHub](https://github.com/dotAIslash/dotaislash.github.io) · [🐛 Report Issue](https://github.com/dotAIslash/dotaislash.github.io/issues)
 
