@@ -1,9 +1,10 @@
-# versa.github.io
+# dotaislash.github.io
 
-Static GitHub Pages site for DotAISlash featuring the **CodeVibe Design System v1.0** reference used by the VERSA (Vendor-neutral Extensible Repo Spec for Agents) initiative.
+User-level GitHub Pages site for DotAISlash. The landing page is a Tailwind-powered implementation of the CodeVibe design system and introduces the VERSA 1.0 specification.
 
-- **Live site:** https://dotaislash.github.io/versa.github.io/ (after Pages builds)
-- **Content:** `index.md` (Markdown rendered with the GitHub Pages Cayman theme)
-- **Theme config:** `_config.yml`
+- **Live site:** https://dotaislash.github.io/
+- **Landing:** `index.html`
+- **Design reference:** `design/codevibe.md`
+- **Spec placeholder:** `versa/v1/index.md`
 
-To update the site, edit `index.md`, commit, and push to `main`. GitHub Pages will rebuild automatically.
+Update any page, commit, and push to `main`; GitHub Pages will redeploy automatically.

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DotAISlash · VERSA 1.0</title>
+    <meta name="description" content="DotAISlash maintains VERSA – the Vendor-neutral Extensible Repo Spec for Agents and the CodeVibe design system." />
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              violet: {
+                50: '#FCEBFF',
+                100: '#F7CCFF',
+                200: '#EFA6FF',
+                300: '#E680FF',
+                400: '#D933FF',
+                500: '#BF28E5',
+                600: '#8F24B3',
+                700: '#7F1B99',
+                800: '#6C137F',
+                900: '#6C137F'
+              },
+              cyan: {
+                50: '#EBFAFF',
+                100: '#CCF5FF',
+                200: '#A6EEFF',
+                300: '#80E5FF',
+                400: '#0DD9FF',
+                500: '#10B5E6',
+                600: '#148AAD',
+                700: '#0E7895',
+                800: '#08637C',
+                900: '#08637C'
+              },
+              lime: {
+                100: '#F9FFCC',
+                200: '#F2FF99',
+                400: '#D9FF33',
+                500: '#BFE60D',
+                600: '#829E16'
+              },
+              pink: {
+                100: '#FFD4F3',
+                300: '#FFAEEA',
+                500: '#FF4DCC',
+                600: '#FF1AAF',
+                900: '#7D1252'
+              },
+              orange: {
+                200: '#FFE5CC',
+                500: '#FF8833',
+                600: '#FF731A'
+              },
+              gray: {
+                50: '#F9FAFC',
+                100: '#F2F4F8',
+                200: '#E4E7ED',
+                400: '#ACB0B8',
+                600: '#656972',
+                700: '#42464F',
+                800: '#292C33',
+                900: '#1B1D22',
+                950: '#111317'
+              }
+            },
+            backgroundImage: {
+              'gradient-hero': 'linear-gradient(135deg, #6C137F 0%, #0DD9FF 100%)',
+              'gradient-pulse': 'linear-gradient(90deg, #FF1AAF 0%, #D9FF33 50%, #0DD9FF 100%)',
+              'gradient-sunset': 'linear-gradient(45deg, #FF8833 0%, #FF4DCC 100%)'
+            },
+            boxShadow: {
+              'glow-violet': '0 0 40px rgba(217, 51, 255, 0.45)',
+              'glow-cyan': '0 0 40px rgba(13, 217, 255, 0.45)'
+            },
+            animation: {
+              'gradient-xy': 'gradient-xy 16s ease infinite',
+              'blob': 'blob 14s ease-in-out infinite'
+            },
+            keyframes: {
+              'gradient-xy': {
+                '0%, 100%': { backgroundPosition: '0% 0%' },
+                '50%': { backgroundPosition: '100% 100%' }
+              },
+              blob: {
+                '0%, 100%': { borderRadius: '60% 40% 30% 70% / 60% 20% 80% 40%' },
+                '50%': { borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body { background-color: #111317; }
+    </style>
+  </head>
+  <body class="min-h-screen bg-gray-950 text-gray-50 antialiased">
+    <div class="absolute inset-x-0 top-0 -z-10 h-[640px] bg-gradient-hero opacity-30 animate-gradient-xy" style="background-size:200% 200%"></div>
+    <header class="relative border-b border-white/10 backdrop-blur-sm bg-gray-950/70">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
+        <div class="flex items-center gap-4">
+          <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-cyan-500 shadow-glow-violet">
+            <span class="text-2xl font-extrabold">&#x3C;/&#x3E;</span>
+          </div>
+          <div>
+            <p class="text-xl font-semibold tracking-tight">DotAISlash</p>
+            <p class="text-sm text-gray-400">Universal agentic project scaffolding</p>
+          </div>
+        </div>
+        <nav class="hidden gap-8 text-sm font-medium text-gray-300 md:flex">
+          <a class="hover:text-cyan-300" href="#versa">VERSA Spec</a>
+          <a class="hover:text-cyan-300" href="#stack">Tooling Stack</a>
+          <a class="hover:text-cyan-300" href="#design">CodeVibe</a>
+          <a class="hover:text-cyan-300" href="#community">Community</a>
+        </nav>
+        <a href="https://github.com/dotAIslash" class="hidden rounded-full border border-cyan-400/50 px-5 py-2 text-sm font-semibold text-cyan-200 transition hover:border-cyan-400 hover:bg-cyan-400/10 md:block">GitHub</a>
+      </div>
+    </header>
+
+    <main class="relative">
+      <section class="relative overflow-hidden">
+        <div class="absolute left-1/2 top-16 -z-10 h-72 w-72 -translate-x-1/2 bg-cyan-500/30 blur-3xl"></div>
+        <div class="mx-auto grid max-w-6xl gap-12 px-6 py-24 lg:grid-cols-2 lg:py-28">
+          <div class="space-y-8">
+            <div class="inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-gray-900/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200">Vendor-neutral</div>
+            <h1 class="text-5xl font-bold leading-tight tracking-tight md:text-6xl">
+              VERSA 1.0 – One <span class="bg-gradient-to-r from-violet-400 via-cyan-300 to-lime-400 bg-clip-text text-transparent">.ai/ folder</span>, many runtimes
+            </h1>
+            <p class="text-lg text-gray-300">
+              VERSA (Vendor-neutral Extensible Repo Spec for Agents) defines a JSON + Markdown layout that unifies rules, prompts, agents, memory, tools, knowledge, settings, and permissions for every agentic coding workflow.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a href="#versa" class="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-violet-600 to-cyan-500 px-8 py-4 text-base font-semibold text-white shadow-glow-violet transition hover:shadow-glow-cyan"><span>Explore VERSA</span><svg class="h-5 w-5 transition group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+              <a href="#design" class="inline-flex items-center gap-2 rounded-full border border-cyan-400/60 px-8 py-4 text-base font-semibold text-cyan-200 transition hover:bg-cyan-400/10">View CodeVibe System</a>
+            </div>
+            <dl class="flex flex-wrap gap-8 text-sm">
+              <div class="flex flex-col">
+                <dt class="uppercase text-gray-400">Categories</dt>
+                <dd class="text-2xl font-semibold text-cyan-200">8 primitives</dd>
+              </div>
+              <div class="flex flex-col">
+                <dt class="uppercase text-gray-400">File types</dt>
+                <dd class="text-2xl font-semibold text-cyan-200">JSON + Markdown</dd>
+              </div>
+              <div class="flex flex-col">
+                <dt class="uppercase text-gray-400">Interop</dt>
+                <dd class="text-2xl font-semibold text-cyan-200">Claude · Cursor · Gemini · Codex</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="relative">
+            <div class="absolute -left-8 top-10 h-56 w-56 animate-blob bg-gradient-to-br from-violet-600/40 to-cyan-500/40 blur-3xl"></div>
+            <div class="absolute -right-10 bottom-0 h-64 w-64 animate-blob bg-gradient-to-tr from-pink-500/30 to-orange-500/30 blur-3xl animation-delay-2000"></div>
+            <div class="relative rounded-3xl border border-white/10 bg-gray-900/50 p-8 shadow-2xl backdrop-blur-xl">
+              <div class="mb-6 flex items-center gap-3 text-sm text-cyan-200">
+                <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-cyan-500 text-lg font-bold">.ai</span>
+                <span>Zero-boilerplate agent project starter</span>
+              </div>
+              <pre class="overflow-x-auto rounded-2xl bg-gray-950/80 p-6 text-sm leading-relaxed text-gray-200 shadow-inner">
+<span class="text-cyan-300">.ai/</span>
+├── <span class="text-violet-300">manifest.json</span>
+├── <span class="text-violet-300">settings.json</span>
+├── <span class="text-violet-300">permissions.json</span>
+├── rules/
+│   ├── <span class="text-gray-200">overview.md</span>
+│   └── <span class="text-gray-200">backend.md</span>
+├── prompts/
+│   └── <span class="text-gray-200">summarize.md</span>
+├── agents/
+│   └── <span class="text-gray-200">codegen.md</span>
+├── tools/
+│   └── <span class="text-gray-200">mcp.servers.json</span>
+├── knowledge/
+│   └── <span class="text-gray-200">sources.json</span>
+└── memory/
+    └── <span class="text-gray-200">policy.md</span>
+              </pre>
+              <p class="mt-6 text-sm text-gray-400">Eight canonical categories · Fully merge-aware · Strict AAA accessibility baseline</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="versa" class="relative border-t border-white/10 bg-gray-950/70">
+        <div class="mx-auto max-w-6xl px-6 py-20">
+          <div class="flex flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
+            <div class="max-w-xl space-y-6">
+              <h2 class="text-4xl font-bold tracking-tight">VERSA 1.0 · Vendor-neutral Extensible Repo Spec for Agents</h2>
+              <p class="text-lg text-gray-300">
+                VERSA translates lessons from AGENTS.md, CLAUDE.md, GEMINI.md, and Cursor rules into a single portable schema. Author once, ship everywhere, stay future-proof.
+              </p>
+              <ul class="grid gap-4 text-sm text-gray-200 sm:grid-cols-2">
+                <li class="rounded-2xl border border-violet-500/30 bg-violet-500/5 p-4"><span class="font-semibold text-violet-200">Interoperable</span><br />Works with IDEs, CLIs, hosted copilots.</li>
+                <li class="rounded-2xl border border-cyan-500/30 bg-cyan-500/5 p-4"><span class="font-semibold text-cyan-200">Extensible</span><br />Profiles, extensions, forward-compatible metadata.</li>
+                <li class="rounded-2xl border border-lime-500/30 bg-lime-500/5 p-4"><span class="font-semibold text-lime-200">Secure</span><br />Deny/ask/allow permissions, secret bindings, redaction policies.</li>
+                <li class="rounded-2xl border border-pink-500/30 bg-pink-500/5 p-4"><span class="font-semibold text-pink-200">Accessible</span><br />CodeVibe system enforces AAA contrast across UI.</li>
+              </ul>
+              <div class="flex flex-wrap gap-4 pt-4">
+                <a href="https://github.com/dotAIslash/dotaislash-spec" class="inline-flex items-center gap-2 rounded-full bg-gray-900/70 px-6 py-3 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-500/10">Read SPEC.md</a>
+                <a href="https://github.com/dotAIslash/dotaislash-cli" class="inline-flex items-center gap-2 rounded-full bg-gray-900/70 px-6 py-3 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-500/10">Install CLI</a>
+              </div>
+            </div>
+            <div class="relative max-w-lg rounded-3xl border border-white/10 bg-gray-900/60 p-8 shadow-xl">
+              <h3 class="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-gray-400">Merge order</h3>
+              <ol class="space-y-3 text-sm text-gray-200">
+                <li><span class="font-semibold text-cyan-200">1.</span> `.ai/settings.json`</li>
+                <li><span class="font-semibold text-cyan-200">2.</span> `.ai/profiles/&lt;name&gt;.settings.json` (when `AI_PROFILE` is set)</li>
+                <li><span class="font-semibold text-cyan-200">3.</span> `~/.ai/settings.json` (keys flagged `user_overridable`)</li>
+                <li><span class="font-semibold text-cyan-200">4.</span> Runtime flags &amp; ephemeral overrides</li>
+              </ol>
+              <p class="mt-6 text-xs uppercase tracking-[0.2em] text-gray-400">Permissions</p>
+              <p class="font-semibold text-cyan-100">deny → ask → allow</p>
+              <p class="mt-4 text-sm text-gray-300">The spec mandates secret bindings via environment or keychain only, with automatic redaction guidelines for knowledge ingestion.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="stack" class="relative border-t border-white/10 bg-gray-950/80">
+        <div class="mx-auto max-w-6xl px-6 py-20">
+          <div class="mb-12 text-center">
+            <h2 class="text-4xl font-bold">The DotAISlash Toolchain</h2>
+            <p class="mt-4 text-gray-300">Planned open-source repositories that bring VERSA to life.</p>
+          </div>
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div class="rounded-3xl border border-violet-500/30 bg-gray-900/60 p-6">
+              <h3 class="text-xl font-semibold text-violet-200">dotaislash-spec</h3>
+              <p class="mt-2 text-sm text-gray-300">Authoritative SPEC.md for VERSA 1.0 and future revisions.</p>
+            </div>
+            <div class="rounded-3xl border border-cyan-500/30 bg-gray-900/60 p-6">
+              <h3 class="text-xl font-semibold text-cyan-200">dotaislash-schemas</h3>
+              <p class="mt-2 text-sm text-gray-300">JSON Schema definitions for every configuration artifact.</p>
+            </div>
+            <div class="rounded-3xl border border-lime-500/30 bg-gray-900/60 p-6">
+              <h3 class="text-xl font-semibold text-lime-200">dotaislash-cli</h3>
+              <p class="mt-2 text-sm text-gray-300">Reference CLI: init, lint, merge, context preview.</p>
+            </div>
+            <div class="rounded-3xl border border-pink-500/30 bg-gray-900/60 p-6">
+              <h3 class="text-xl font-semibold text-pink-200">dotaislash-examples</h3>
+              <p class="mt-2 text-sm text-gray-300">Minimal and full project samples you can clone today.</p>
+            </div>
+            <div class="rounded-3xl border border-orange-500/30 bg-gray-900/60 p-6">
+              <h3 class="text-xl font-semibold text-orange-200">dotaislash-conformance</h3>
+              <p class="mt-2 text-sm text-gray-300">Black-box scenarios to certify runtime compliance.</p>
+            </div>
+            <div class="rounded-3xl border border-cyan-500/30 bg-gray-900/60 p-6">
+              <h3 class="text-xl font-semibold text-cyan-200">dotaislash-website</h3>
+              <p class="mt-2 text-sm text-gray-300">Documentation hub, migration guides, adapter registry.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="design" class="relative border-t border-white/10 bg-gray-950/70">
+        <div class="mx-auto max-w-6xl px-6 py-20">
+          <div class="grid gap-12 lg:grid-cols-2">
+            <div class="space-y-6">
+              <h2 class="text-4xl font-bold">CodeVibe Design System</h2>
+              <p class="text-lg text-gray-300">A vibrant, AAA-compliant visual language built on gradient energy, syntax-inspired colors, and organic shapes. Tailored for dashboards, docs, and agentic tooling.</p>
+              <ul class="space-y-4 text-sm text-gray-200">
+                <li><span class="font-semibold text-violet-200">Palette:</span> Cyber Violet · Electric Cyan · Neon Lime · Plasma Pink · Sunset Orange</li>
+                <li><span class="font-semibold text-cyan-200">Accessibility:</span> All text / background combinations meet WCAG AAA for body copy.</li>
+                <li><span class="font-semibold text-lime-200">Components:</span> Gradient hero, curved cards, pill CTAs, animated blobs, wave dividers.</li>
+                <li><span class="font-semibold text-pink-200">Tech stack:</span> Tailwind CSS, CSS custom properties, ready for Next.js.</li>
+              </ul>
+              <a href="./design/codevibe/" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-pink-600 to-orange-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-pink-600/50 transition hover:shadow-xl hover:shadow-orange-500/50">View full design reference</a>
+            </div>
+            <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-gray-900/60 p-8 shadow-2xl">
+              <div class="mb-6 text-sm uppercase tracking-[0.3em] text-gray-400">Gradient presets</div>
+              <div class="grid gap-4 text-sm">
+                <div class="rounded-2xl bg-gradient-hero p-4 font-semibold text-white shadow-lg">Hero · linear-gradient(135deg, #6C137F, #0DD9FF)</div>
+                <div class="rounded-2xl bg-gradient-pulse p-4 font-semibold text-white shadow-lg">Electric Pulse · CTA</div>
+                <div class="rounded-2xl bg-gradient-sunset p-4 font-semibold text-white shadow-lg">Sunset Burst · Success moments</div>
+              </div>
+              <p class="mt-6 text-sm text-gray-300">Run `tailwind.config.js` from the design kit to inherit palette, radii, mesh effects, and keyframe animations instantly.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="community" class="relative border-t border-white/10 bg-gray-950/70">
+        <div class="mx-auto max-w-6xl px-6 py-20 text-center">
+          <h2 class="text-4xl font-bold">Build the interoperable future with us</h2>
+          <p class="mx-auto mt-4 max-w-2xl text-gray-300">We are drafting governance, RFC flows, adapter guidelines, and community calls. Join early to help shape the standard.</p>
+          <div class="mt-10 flex flex-wrap justify-center gap-4">
+            <a href="https://github.com/dotAIslash/dotaislash-community" class="inline-flex items-center gap-2 rounded-full border border-cyan-400/60 px-6 py-3 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-400/10">Community repo</a>
+            <a href="https://github.com/dotAIslash/dotaislash-rfcs" class="inline-flex items-center gap-2 rounded-full border border-cyan-400/60 px-6 py-3 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-400/10">Submit an RFC</a>
+            <a href="mailto:contact@dotaislash.org" class="inline-flex items-center gap-2 rounded-full border border-cyan-400/60 px-6 py-3 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-400/10">Contact</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/10 bg-gray-950/80">
+      <div class="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-sm text-gray-400 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <p class="font-semibold text-gray-100">DotAISlash</p>
+          <p class="text-gray-400">VERSA 1.0 · JSON + Markdown interop for agentic coding</p>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <a class="hover:text-cyan-200" href="https://github.com/dotAIslash">GitHub</a>
+          <a class="hover:text-cyan-200" href="https://github.com/dotAIslash/dotaislash-spec">Spec repo</a>
+          <a class="hover:text-cyan-200" href="https://github.com/dotAIslash/dotaislash-website">Docs site</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
