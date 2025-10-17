@@ -356,11 +356,10 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {pillars.map((pillar) => (
               <EnhancedCard key={pillar.title}>
-                <div className="flex items-center justify-between mb-6">
-                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-violet-500/20 to-cyan-500/20 flex items-center justify-center">
+                <div className="mb-6">
+                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-violet-500/20 to-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <Icon name={pillar.icon} size={32} className="text-cyan-300" />
                   </div>
-                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-violet-500/30 to-cyan-500/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300" />
                 </div>
                 <h3 className="text-2xl font-bold text-cyan-300 mb-4">{pillar.title}</h3>
                 <p className="text-gray-300 leading-relaxed">{pillar.body}</p>
