@@ -125,39 +125,59 @@ const workflow = [
 const repos = [
   {
     name: "dotaislash-spec",
-    description: "Authoritative SPEC.md for VERSA 1.0 and future revisions.",
+    description: "Canonical VERSA 1.0 specification and design rationale.",
     href: "https://github.com/dotAIslash/dotaislash-spec",
     gradient: "from-violet-500 to-violet-600",
+    badge: "Spec",
   },
   {
     name: "dotaislash-schemas",
-    description: "JSON Schema definitions for every `.ai/` artifact.",
+    description: "JSON Schema validation for `.ai/` files - v1.0.0 released.",
     href: "https://github.com/dotAIslash/dotaislash-schemas",
     gradient: "from-cyan-500 to-cyan-600",
+    badge: "v1.0.0",
   },
   {
     name: "dotaislash-cli",
-    description: "Reference CLI to init, lint, print merged context, preview packets.",
+    description: "Reference CLI tool (versa init, lint, context) - v1.0.0 released.",
     href: "https://github.com/dotAIslash/dotaislash-cli",
     gradient: "from-lime-500 to-lime-600",
+    badge: "v1.0.0",
   },
   {
     name: "dotaislash-examples",
-    description: "Minimal and full project templates you can clone today.",
+    description: "10 validated example configurations for various project types.",
     href: "https://github.com/dotAIslash/dotaislash-examples",
     gradient: "from-pink-500 to-pink-600",
-  },
-  {
-    name: "dotaislash-conformance",
-    description: "Black-box scenarios to certify VERSA-compatible runtimes.",
-    href: "https://github.com/dotAIslash/dotaislash-conformance",
-    gradient: "from-orange-500 to-orange-600",
+    badge: "v1.0.0",
   },
   {
     name: "dotaislash-adapters",
-    description: "Tool-specific adapters transforming VERSA to native configs.",
+    description: "Transform VERSA to native tool formats (Cursor, Windsurf) - v1.0.0.",
     href: "https://github.com/dotAIslash/dotaislash-adapters",
+    gradient: "from-orange-500 to-orange-600",
+    badge: "v1.0.0",
+  },
+  {
+    name: "dotaislash-conformance",
+    description: "70 black-box scenarios to certify VERSA-compatible runtimes.",
+    href: "https://github.com/dotAIslash/dotaislash-conformance",
     gradient: "from-violet-500 to-cyan-500",
+    badge: "v1.0.0",
+  },
+  {
+    name: "dotaislash.github.io",
+    description: "Landing site and documentation built with Next.js 15 + Tailwind 4.",
+    href: "https://github.com/dotAIslash/dotaislash.github.io",
+    gradient: "from-cyan-500 to-lime-500",
+    badge: "Website",
+  },
+  {
+    name: ".github",
+    description: "Organization profile and community documentation.",
+    href: "https://github.com/dotAIslash/.github",
+    gradient: "from-lime-500 to-pink-500",
+    badge: "Org",
   },
 ];
 
@@ -438,19 +458,19 @@ export default function Home() {
               Ecosystem
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              The <span className="bg-gradient-to-r from-lime-400 to-cyan-400 bg-clip-text text-transparent">dotAIslash</span> toolkit
+              The <span className="bg-gradient-to-r from-lime-400 to-cyan-400 bg-clip-text text-transparent">dotAIslash</span> ecosystem
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Specs, schemas, CLI tooling, examples, and conformance suites keep VERSA grounded in real projects.
+              All 8 repositories: specs, schemas, CLI tooling, examples, adapters, conformance suites, website, and community.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {repos.map((repo) => (
               <EnhancedCard key={repo.name}>
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-bold text-white font-mono">{repo.name}</h3>
-                  <span className="text-xs text-gray-500 uppercase tracking-wider">GitHub</span>
+                  <h3 className="text-base font-bold text-white font-mono">{repo.name}</h3>
+                  <span className="text-xs px-2 py-1 rounded-full bg-gradient-to-r from-violet-500/20 to-cyan-500/20 text-cyan-300 font-semibold">{repo.badge}</span>
                 </div>
                 <p className="text-sm text-gray-300 leading-relaxed mb-6">{repo.description}</p>
                 
