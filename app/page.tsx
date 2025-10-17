@@ -11,16 +11,22 @@ const stats = [
     gradient: "from-violet-400 to-cyan-400",
   },
   {
-    label: "File formats",
-    value: "2",
-    description: "Plain JSON for structure, Markdown for human-readable context",
+    label: "npm packages released",
+    value: "5",
+    description: "Schemas, CLI, Examples, Adapters, Conformance - all v1.0.0",
     gradient: "from-cyan-400 to-lime-400",
   },
   {
-    label: "Target runtimes",
-    value: "5+",
-    description: "Cursor, Windsurf, Claude, Codex, Aider, and more",
+    label: "Tests passing",
+    value: "230",
+    description: "Comprehensive test coverage across all packages",
     gradient: "from-lime-400 to-pink-400",
+  },
+  {
+    label: "Conformance scenarios",
+    value: "70",
+    description: "Black-box tests to certify VERSA-compatible runtimes",
+    gradient: "from-pink-400 to-orange-400",
   },
 ];
 
