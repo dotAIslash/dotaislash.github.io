@@ -2,6 +2,7 @@ import Link from "next/link";
 import Navbar from "./components/Navbar";
 import CodeTerminal from "./components/CodeTerminal";
 import Footer from "./components/Footer";
+import Icon from "./components/Icon";
 
 const stats = [
   {
@@ -32,17 +33,17 @@ const stats = [
 
 const pillars = [
   {
-    icon: "🔄",
+    icon: "sync",
     title: "Portable by design",
     body: "One `.ai/` folder that every agent runtime can parse. Structured merge rules keep overrides predictable across tools.",
   },
   {
-    icon: "🔒",
+    icon: "lock",
     title: "Security-first",
     body: "Explicit deny → ask → allow permissions, secret bindings, and knowledge redaction baked into the spec from day one.",
   },
   {
-    icon: "⚡",
+    icon: "bolt",
     title: "Developer experience",
     body: "Lintable, diffable, testable. Designed for CI/CD pipelines while staying approachable for humans to author.",
   },
@@ -51,49 +52,49 @@ const pillars = [
 const categories = [
   {
     name: "Rules",
-    icon: "📜",
+    icon: "scroll",
     summary: "Persistent project context delivered to every agent call.",
     color: "from-violet-500 to-violet-600",
   },
   {
     name: "Prompts",
-    icon: "💬",
+    icon: "comment",
     summary: "Reusable templates with typed variables and inline tests.",
     color: "from-cyan-500 to-cyan-600",
   },
   {
     name: "Agents",
-    icon: "🤖",
+    icon: "robot",
     summary: "Declarative presets describing goals, tools, context attachments.",
     color: "from-lime-500 to-lime-600",
   },
   {
     name: "Memory",
-    icon: "🧠",
+    icon: "brain",
     summary: "Retention policies and durable notes – session, project, or none.",
     color: "from-pink-500 to-pink-600",
   },
   {
     name: "Knowledge",
-    icon: "📚",
+    icon: "book",
     summary: "Ingestion config for docs, repos, URLs with redaction directives.",
     color: "from-orange-500 to-orange-600",
   },
   {
     name: "Tools",
-    icon: "🛠️",
+    icon: "tools",
     summary: "MCP servers and HTTP descriptors for reproducible capabilities.",
     color: "from-violet-500 to-cyan-500",
   },
   {
     name: "Settings",
-    icon: "⚙️",
+    icon: "settings",
     summary: "Model routing, budgets, UI preferences, and profile overlays.",
     color: "from-cyan-500 to-lime-500",
   },
   {
     name: "Permissions",
-    icon: "🛡️",
+    icon: "shield",
     summary: "Policy enforcement with secret bindings and ask-before-run prompts.",
     color: "from-pink-500 to-orange-500",
   },
@@ -102,22 +103,22 @@ const categories = [
 const workflow = [
   {
     step: "Author",
-    icon: "✍️",
+    icon: "edit",
     detail: "Capture durable guidance in Markdown with `ai:meta` preambles for scope, priority, and attach mode.",
   },
   {
     step: "Validate",
-    icon: "✅",
+    icon: "check",
     detail: "Run `versa lint` to check JSON Schemas and Markdown metadata across environments.",
   },
   {
     step: "Launch",
-    icon: "🚀",
+    icon: "rocket",
     detail: "Start MCP servers, merge profile overlays, hand the same `.ai/` context to all tools.",
   },
   {
     step: "Evolve",
-    icon: "🔄",
+    icon: "repeat",
     detail: "Ship conformance scenarios, design updates, and spec proposals via issues.",
   },
 ];
@@ -356,7 +357,9 @@ export default function Home() {
             {pillars.map((pillar) => (
               <EnhancedCard key={pillar.title}>
                 <div className="flex items-center justify-between mb-6">
-                  <span className="text-5xl">{pillar.icon}</span>
+                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-violet-500/20 to-cyan-500/20 flex items-center justify-center">
+                    <Icon name={pillar.icon} size={32} className="text-cyan-300" />
+                  </div>
                   <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-violet-500/30 to-cyan-500/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300" />
                 </div>
                 <h3 className="text-2xl font-bold text-cyan-300 mb-4">{pillar.title}</h3>
@@ -398,8 +401,8 @@ export default function Home() {
               <EnhancedCard key={category.name}>
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-xl font-bold text-white">{category.name}</h3>
-                  <div className={`h-12 w-12 rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                    {category.icon}
+                  <div className={`h-12 w-12 rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                    <Icon name={category.icon} size={24} className="text-white" />
                   </div>
                 </div>
                 <p className="text-sm text-gray-300 leading-relaxed">{category.summary}</p>
@@ -430,7 +433,9 @@ export default function Home() {
                 <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-cyan-500 text-2xl font-bold text-white mb-6 shadow-lg shadow-violet-500/30 group-hover:scale-110 transition-transform duration-300">
                   {index + 1}
                 </div>
-                <div className="text-4xl mb-4">{item.icon}</div>
+                <div className="mb-4">
+                  <Icon name={item.icon} size={40} className="text-cyan-300" />
+                </div>
                 <h3 className="text-2xl font-bold text-cyan-300 mb-4">{item.step}</h3>
                 <p className="text-sm text-gray-300 leading-relaxed">{item.detail}</p>
               </EnhancedCard>
