@@ -1,9 +1,28 @@
 // File: app/components/Icon.tsx
-// What: Icon component using Unicons Monochrome
-// Why: Replace emojis with professional vector icons
+// What: Icon component using Lucide icons
+// Why: Replace emojis with professional vector icons without external CSS
 // Related: page.tsx
 
 import React from 'react';
+import type { LucideIcon } from 'lucide-react';
+import {
+  BookOpen,
+  Bot,
+  Brain,
+  CheckCircle2,
+  Circle,
+  Lock,
+  MessageCircle,
+  Pencil,
+  RefreshCw,
+  Repeat,
+  Rocket,
+  ScrollText,
+  Settings,
+  ShieldCheck,
+  Wrench,
+  Zap,
+} from 'lucide-react';
 
 interface IconProps {
   name: string;
@@ -12,36 +31,37 @@ interface IconProps {
 }
 
 export default function Icon({ name, className = "", size = 24 }: IconProps) {
-  // Map icon names to Unicons classes
-  const iconMap: Record<string, string> = {
+  // Map icon names to Lucide components
+  const iconMap: Record<string, LucideIcon> = {
     // Pillars
-    "sync": "uil-sync",           // 🔄 Portable
-    "lock": "uil-lock",           // 🔒 Security
-    "bolt": "uil-bolt",           // ⚡ Developer experience
+    "sync": RefreshCw,            // 🔄 Portable
+    "lock": Lock,                 // 🔒 Security
+    "bolt": Zap,                  // ⚡ Developer experience
     
     // Categories
-    "scroll": "uil-scroll",       // 📜 Rules
-    "comment": "uil-comment",     // 💬 Prompts
-    "robot": "uil-robot",         // 🤖 Agents
-    "brain": "uil-brain",         // 🧠 Memory
-    "book": "uil-book-open",      // 📚 Knowledge
-    "tools": "uil-wrench",        // 🛠️ Tools
-    "settings": "uil-setting",    // ⚙️ Settings
-    "shield": "uil-shield-check", // 🛡️ Permissions
+    "scroll": ScrollText,         // 📜 Rules
+    "comment": MessageCircle,     // 💬 Prompts
+    "robot": Bot,                 // 🤖 Agents
+    "brain": Brain,               // 🧠 Memory
+    "book": BookOpen,             // 📚 Knowledge
+    "tools": Wrench,              // 🛠️ Tools
+    "settings": Settings,         // ⚙️ Settings
+    "shield": ShieldCheck,        // 🛡️ Permissions
     
     // Workflow
-    "edit": "uil-edit",           // ✍️ Author
-    "check": "uil-check-circle",  // ✅ Validate
-    "rocket": "uil-rocket",       // 🚀 Launch
-    "repeat": "uil-repeat",       // 🔄 Evolve
+    "edit": Pencil,               // ✍️ Author
+    "check": CheckCircle2,        // ✅ Validate
+    "rocket": Rocket,             // 🚀 Launch
+    "repeat": Repeat,             // 🔄 Evolve
   };
 
-  const iconClass = iconMap[name] || "uil-circle";
+  const IconComponent = iconMap[name] || Circle;
 
   return (
-    <i 
-      className={`${iconClass} ${className}`}
-      style={{ fontSize: `${size}px` }}
+    <IconComponent
+      className={className}
+      size={size}
+      aria-hidden="true"
     />
   );
 }
